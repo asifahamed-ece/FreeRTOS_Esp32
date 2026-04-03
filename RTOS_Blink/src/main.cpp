@@ -7,7 +7,7 @@
 #endif
 
 //Pins
-static const int ledpin = LED_BUILTIN;
+static const int ledpin = LED_BUILTIN;  // Blinking Built_In LED for ESP32, GPIO 2
 
 // Our Task : Blink an LED
 void ToggleLED(void *parameters)
