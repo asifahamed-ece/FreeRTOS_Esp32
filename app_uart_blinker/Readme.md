@@ -35,8 +35,8 @@ This task handles the hardware interaction. It toggles GPIO 2 HIGH and LOW, usin
 
 1.  **Clone the repository:**
     ```bash
-    git clone [https://github.com/yourusername/your-repo-name.git](https://github.com/yourusername/your-repo-name.git)
-    cd your-repo-name
+    git clone [https://github.com/asifahamed-ece/FreeRTOSEsp32.git](https://github.com/asifahamed-ece/FreeRTOSEsp32.git)
+    cd app_uart_blinker
     ```
 2.  **Open in PlatformIO:** Open the folder in VS Code with the PlatformIO extension installed.
 3.  **Build and Upload:** Connect your ESP32 and click the "Upload" button (or run `pio run -t upload`).
