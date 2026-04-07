@@ -1,4 +1,4 @@
-# ESP32 FreeRTOS: Dynamic LED Blinker via UART
+## ESP32 FreeRTOS: Dynamic LED Blinker via UART
 
 ## Overview
 This project demonstrates concurrent task management and inter-task communication on an ESP32 using FreeRTOS. It solves the challenge of running a user interface (listening for serial input) concurrently with a hardware control task (blinking an LED) without using blocking delays like a standard `delay()`.
