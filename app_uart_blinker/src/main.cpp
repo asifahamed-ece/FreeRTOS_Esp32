@@ -1,5 +1,5 @@
 // A FreeRTOS COde which Controls the Blinking of an LED on an ESP32 Board. The Blink Rate can be Updated Dynamically via Serial Input.
-//  The Code is Designed to Run on a Single Core of the ESP32, Demonstrating Task Management and Inter-task Communication in FreeRTOS.
+// The Code is Designed to Run on a Single Core of the ESP32, Demonstrating Task Management and Inter-task Communication in FreeRTOS.
 
 #include <Arduino.h>
 #include <stdlib.h>
