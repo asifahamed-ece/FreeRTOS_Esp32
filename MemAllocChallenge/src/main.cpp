@@ -58,7 +58,8 @@ void vTaskProducer(void *pvParameters){
           idx++ ;
         }
         else{
-          // Discards Entire Buffer data, No Overflow handle added.
+          // Discards Entire Buffer data, No Overflow handle added.\
+          idx = 0;
         }
       }
     }
@@ -89,7 +90,7 @@ void vTaskConsumer(void *pvParameters){
     vPortFree(pRecMessage);
     pRecMessage = NULL;
 
-    Serial.println("[Consumer] Freed Memmory.");
+    Serial.println("[Consumer] Freed Memory.");
     }
   }
 }
