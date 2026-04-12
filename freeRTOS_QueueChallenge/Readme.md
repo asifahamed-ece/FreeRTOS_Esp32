@@ -32,6 +32,7 @@ Two FreeRTOS tasks communicate bidirectionally using two queues on an ESP32.
 ```bash
 pio run --target upload
 pio device monitor --baud 115200
+```
 
 ### Bugs Fixed
 Buffer overflow (rxBuffer[32] → rxBuffer[idx])
