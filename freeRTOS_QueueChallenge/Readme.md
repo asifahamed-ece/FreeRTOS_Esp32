@@ -32,20 +32,21 @@ Two FreeRTOS tasks communicate bidirectionally using two queues on an ESP32.
 ```bash
 pio run --target upload
 pio device monitor --baud 115200
+```
 
 ### Bugs Fixed
-Buffer overflow (rxBuffer[32] → rxBuffer[idx])
-Double‑trigger on Enter (only process when idx > 0)
-Missing idx++ (last char overwritten)
-Queue creation at global scope (moved inside setup())
+- Buffer overflow (`rxBuffer[32]` → `rxBuffer[idx]`)
+- Double‑trigger on Enter (only process when `idx > 0`)
+- Missing `idx++` (last character overwritten)
+- Queue creation at global scope (moved inside `setup()`)
 
 ### Learning Outcomes
-Queue creation, sending, receiving
-Bidirectional command‑telemetry pattern
-Non‑blocking queue reads
-Safe string handling in C
+- Queue creation, sending, and receiving
+- Bidirectional command‑telemetry pattern
+- Non‑blocking queue reads
+- Safe string handling in C
 
 ### Next Steps
-Replace blocking vTaskDelay() with non‑blocking state machine
-Use structs for telemetry
-Implement dynamic memory for strings
+- Replace blocking `vTaskDelay()` with non‑blocking state machine
+- Use structs for telemetry messages
+- Implement dynamic memory (`pvPortMalloc` / `vPortFree`) for strings
