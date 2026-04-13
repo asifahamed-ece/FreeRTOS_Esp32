@@ -9,13 +9,21 @@
 // Create a Shared Global Variable
 volatile int sharedCounter = 0;
 
+SemaphoreHandle_t counterMutex;
+
 void incTask(void *Parameters){
+  
   while(1){
-    int localVar = sharedCounter; // Read the shared counter into a local variable
-    localVar++; // Increment the local variable
-    Serial.println("Counter: " + String(localVar) + " from core " 
-    + String(xPortGetCoreID())+ "Task :" + String(pcTaskGetName(NULL)) + "\n");
-    sharedCounter = localVar; // Write the local variable back to the shared counter
+    if(xSemaphoreTake(counterMutex, portMAX_DELAY) == pdTRUE){
+
+      sharedCounter++;  // Increment only if the Current Task has the Mutex Token
+
+      Serial.println("Counter: " + String(sharedCounter) + " from core " 
+      + String(xPortGetCoreID())+ "Task :" + String(pcTaskGetName(NULL)) + "\n");
+      
+      xSemaphoreGive(counterMutex);  // Give back the Mutex Token for other Tasks to use.
+    }
+    
     vTaskDelay(pdMS_TO_TICKS(1)); // Smaller delay for Seeing Race Condition
   }
 }
@@ -26,6 +34,8 @@ void setup() {
   vTaskDelay(pdMS_TO_TICKS(2000)); // Wait for the serial monitor to open
 
   Serial.println("Hello world from core " + String(xPortGetCoreID()));
+
+  counterMutex = xSemaphoreCreateMutex();
 
   // Create a task that will run on the other core
   xTaskCreatePinnedToCore(
