@@ -20,9 +20,8 @@ void incTask(void *Parameters){
 
         Serial.println("Counter: " + String(sharedCounter) + " from core " 
         + String(xPortGetCoreID())+ "Task :" + String(pcTaskGetName(NULL)) + "\n");
-xSemaphoreGive(counterMutex);  // Give back the Mutex Token for other Tasks to use.
+        xSemaphoreGive(counterMutex);  // Give back the Mutex Token for other Tasks to use.
     }
-    
     vTaskDelay(pdMS_TO_TICKS(1)); // Smaller delay for Seeing Race Condition
   }
 }
