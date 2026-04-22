@@ -7,7 +7,7 @@
 #endif
 
 // Declare the Pin
-static const int ledpin = 2;  // Blinking Built_In LED for ESP32, GPIO 2
+static const int ledpin = 8;  // Blinking Built_In LED for ESP32-C3, GPIO 8
 #define rate1 500
 #define rate2 333
 
