@@ -5,7 +5,7 @@
 ![Language](https://img.shields.io/badge/Language-Embedded%20C-blue?logo=c)
 ![RTOS](https://img.shields.io/badge/RTOS-FreeRTOS-green?logo=linux)
 ![Hardware](https://img.shields.io/badge/Hardware-ESP32-orange?logo=espressif)
-![Framework](https://img.shields.io/badge/Framework-ESP--IDF-purple)
+![Framework](https://img.shields.io/badge/Framework-Arduino-blue)
 ![Status](https://img.shields.io/badge/Status-Active%20Learning-brightgreen)
 
 *A structured learning journey and project portfolio documenting my mastery of FreeRTOS on the ESP32.*
