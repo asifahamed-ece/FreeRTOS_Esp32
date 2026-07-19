@@ -1,3 +1,15 @@
+/*
+Binary semaphore: can be “given” by any task (here, GivingTask).
+Once binSem is taken by WaitingTask, it stays at 0 until GivingTask gives it again.
+
+Mutex: can only be given back by the task that took it (here, WaitingTask takes SerialMutex, prints, then gives it back).
+The mutex protects the Serial output from interleaving.
+
+The FLow:
+WaitingTask blocks on binSem every loop because it never gives it back – it only releases the mutex.
+After 5 seconds, GivingTask takes the mutex, prints, releases the mutex, and then gives binSem, which unblocks WaitingTask again.
+*/
+
 #include <Arduino.h>
 #if CONFIG_FREERTOS_UNICORE
 const BaseType_t app_cpu = 0;
