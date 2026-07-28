@@ -1,0 +1,22 @@
+ # IDE Folders
+.vdscode/
+.idea/
+
+# Test Folders
+**/test/
+
+# Build Artifacts
+.build/
+pioenvs/
+
+ # IDE Folders
+.vdscode/
+.idea/
+
+# Test Folders
+**/test/
+
+# Build Artifacts
+.build/
+pioenvs/
+
