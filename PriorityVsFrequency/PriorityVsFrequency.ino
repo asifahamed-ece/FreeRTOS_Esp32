@@ -7,6 +7,8 @@ struct workerConfig{
     uint32_t delayMs;
 };
 
+BaseType_t app_cpu = 0;
+
 static const workerConfig configA = {"A", 500};
 static const workerConfig configB = {"B", 1000};
 
@@ -33,22 +35,24 @@ void setup()
     Serial.begin(115200);
     delay(1000);
 
-    BaseType_t resultA = xTaskCreate(
+    BaseType_t resultA = xTaskCreatePinnedToCore(
         WorkerTask,
         "Worker A",
         4096,
         (void *) &configA,
         1,
-        &taskHandleA
+        &taskHandleA,
+        app_cpu
     );
 
-    BaseType_t resultB = xTaskCreate(
+    BaseType_t resultB = xTaskCreatePinnedToCore(
         WorkerTask,
         "Worker B",
         4096,
         (void *) &configB,
         3,                      // Higher priority than task A
-        &taskHandleB
+        &taskHandleB,
+        app_cpu
     );
 
     if(resultA != pdPASS ){
