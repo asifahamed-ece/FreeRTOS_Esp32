@@ -7,7 +7,7 @@ struct workerConfig{
     uint32_t delayMs;
 };
 
-BaseType_t app_cpu = 0;
+BaseType_t app_cpu = xPortGetCoreID(); // Get the current CPU core ID
 
 static const workerConfig configA = {"A", 500};
 static const workerConfig configB = {"B", 1000};
@@ -22,7 +22,7 @@ void WorkerTask (void *vParameters) {
 
     for (;;)
     {
-        Serial.printf("[%lu ms] Worker %s : %lu\n", millis(), config->label, counter);
+        Serial.printf("[%lu ms] Worker %s | Core: %d | Counter: %lu\n", millis(), config->label, (int)xPortGetCoreID(), counter);
         
         counter++;
 
@@ -34,6 +34,11 @@ void setup()
 {
     Serial.begin(115200);
     delay(1000);
+
+    Serial.printf("Configured worker core: %d\n", (int)app_cpu);
+
+    Serial.printf("setup() executing on core: %d\n",
+                (int)xPortGetCoreID());
 
     BaseType_t resultA = xTaskCreatePinnedToCore(
         WorkerTask,
