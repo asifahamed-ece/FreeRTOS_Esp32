@@ -54,6 +54,9 @@ void setup()
     if(resultA != pdPASS ){
         Serial.println("Task A creation failed!");
     }
+    else if (resultB != pdPASS ){
+        Serial.println("Task B creation failed!");
+    }
 }
 
 void loop()
