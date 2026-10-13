@@ -18,10 +18,10 @@ void SamplerTask(void *pvParameters)
     // Start the Sensor data Sampling
     for(;;)
     {
-        static unsigned long newStart = millis();  // Record sample start time
+        unsigned long newStart = millis();  // Record sample start time
         Serial.printf("Sample %lu | Start: %lu ms | Interval: %lu ms\n", SampleNum, newStart, (firstSample != true) ? (newStart - prevStart) : (unsigned long)0);
         
-        while( (unsigned long)(millis() - newStart) > ProcDelayMs){
+        while( (unsigned long)(millis() - newStart) < ProcDelayMs){
         }
 
         vTaskDelay(pdMS_TO_TICKS(200));
