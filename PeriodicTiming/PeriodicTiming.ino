@@ -10,18 +10,18 @@ const unsigned long ProcDelayMs = 50U;
 
 void SamplerTask(void *pvParameters)
 {
-    const unsigned long prevStart = 0;
-    const unsigned long SampleNum = 0;
-    const unsigned long SampleCounter = 0;
+    static unsigned long prevStart = 0;
+    static unsigned long SampleNum = 0;
+    static unsigned long SampleCounter = 0;
 
-    const bool firstSample = true;
+    static bool firstSample = true;
 
     // Start the Sensor data Sampling
     for(;;)
     {
-        const unsigned long newStart = millis();  // Record sample start time
+        static unsigned long newStart = millis();  // Record sample start time
         while( (unsigned long) ( (millis() - newStart) > ProcDelayMs)){
-            Serial.printf("Sample %lu | Start: %lu ms | Interval: %lu ms\n", SampleNum, newStart, (firstSample != true) ? (prevStart - newStart) : "0");
+            Serial.printf("Sample %lu | Start: %lu ms | Interval: %lu ms\n", SampleNum, newStart, (firstSample != true) ? (prevStart - newStart) : 0);
         }
 
         vTaskDelay(pdMS_TO_TICKS(200));
